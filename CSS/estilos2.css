@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    display: flex;           /* Usar flexbox para dividir la pantalla */
+    min-height: 100vh;       /* Altura completa de la pantalla */
+    font-family: Arial, sans-serif;
+}
+
+/* Sección izquierda */
+.izquierda {
+    width: 50%;
+    background-color: #D9F6C0; /* color de ejemplo */
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info h1 {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+.titulo {
+    display: block;
+    color: #000000;
+    font-size: 64px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Sección derecha */
+.derecha {
+    width: 50%;
+    background-color: #D9F6C0; /* color de ejemplo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido de la izquierda */
+.info {
+    text-align: center;
+    padding: 40px;
+}
+
+/* Tarjeta de login */
+.login-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background: linear-gradient(
+        to bottom,
+        #F5EDED 0%,
+        #A8C499 31%,
+        #7DB760 64%,
+        #6F9059 100%
+    );    
+    width: 100%;
+    max-width: 545px;   /* ancho tomado de Figma */
+    min-height: 456px;  /* alto tomado de Figma */
+
+    padding: 30px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    width: 320px;
+    box-shadow: -15px 20px 20px rgba(0,0,0,0.25);
+}
+
+/* Título */
+.card h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #1f2937;
+}
+
+/* Labels */
+.card label {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: #1f2937;
+}
+
+/* Inputs */
+.card input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    background-color: rgba(255,255,255,0.9);
+}
+
+/* Focus en inputs */
+.card input:focus {
+    outline: none;
+    border-color: #6F9059;
+    box-shadow: 0 0 0 2px rgba(111,144,89,0.3);
+}
+
+/* Botón */
+.card button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1.4px solid #000000;
+    background-color: #14AE5C;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #111827;
+}
+
+/* Alerta de error */
+.alerta {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+

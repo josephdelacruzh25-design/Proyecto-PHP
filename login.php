@@ -1,8 +1,8 @@
 <?php
 session_start();
 // Credenciales de ejemplo (en producción usar base de datos y hashing)
-$validUser = 'admin';
-$validPass = 'secret';
+$validUser = 'alumno@prueba.com';
+$validPass = '1234';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = isset($_POST['username']) ? trim($_POST['username']) : '';
