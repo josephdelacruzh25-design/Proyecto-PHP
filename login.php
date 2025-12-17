@@ -1,21 +1,32 @@
 <?php
 session_start();
-// Credenciales de ejemplo (en producción usar base de datos y hashing)
-$validUser = 'alumno@prueba.com';
-$validPass = '1234';
+include("conexion.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user = isset($_POST['username']) ? trim($_POST['username']) : '';
-    $pass = isset($_POST['password']) ? $_POST['password'] : '';
+$correo = $_POST['correo'];
+$contrasena = $_POST['contrasena'];
 
-    if ($user === $validUser && $pass === $validPass) {
-        // Autenticación exitosa
-        $_SESSION['user'] = $user;
-        header('Location: dashboard.php');
-        exit;
+$sql = "SELECT * FROM usuarios 
+        WHERE correo = '$correo' 
+        AND contrasena = '$contrasena'";
+
+$resultado = mysqli_query($conexion, $sql);
+
+if (mysqli_num_rows($resultado) == 1) {
+
+    $usuario = mysqli_fetch_assoc($resultado);
+
+    $_SESSION['usuario'] = $usuario['nombre'];
+    $_SESSION['rol'] = $usuario['rol'];
+
+    // Redirección según rol
+    if ($usuario['rol'] == 'alumno') {
+        header("Location: ALUMNO/inicio.php");
+    } elseif ($usuario['rol'] == 'docente') {
+        header("Location: inicio_docente.php");
+    } else {
+        header("Location: inicio_admin.php");
     }
-}
 
-// Si falla, redirigir al login con indicador de error
-header('Location: index.php?error=1');
-exit;
+} else {
+    header("Location: index.php?error=1");
+}

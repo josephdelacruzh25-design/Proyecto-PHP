@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// prueba: proteger la página
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/estilos.css">
 
 </head>
 
@@ -68,7 +78,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="Cerrar Sesión">
+                        <a href="../index.php" title="Cerrar Sesión">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             <span>Cerrar Sesión</span>
                         </a>
@@ -85,7 +95,7 @@
                     participar en encuestas.<br>Revisa el menú lateral para acceder a cada opción.</br>
             </section>
         </div>
-        <script src="/JS/menu.js"></script>
+        <script src="../JS/menu.js"></script>
     </section>
     <footer>
         <div class="contenedor">

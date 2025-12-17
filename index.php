@@ -1,34 +1,52 @@
 <?php
-session_start();
-if (isset($_SESSION['user'])) {
-		header('Location: dashboard.php');
-		exit;
-}
-$error = isset($_GET['error']) ? (int)$_GET['error'] : 0;
+$error = 0;
+include("conexion.php");
 ?>
-<!doctype html>
+
+<?php
+$error = isset($_GET['error']) ? 1 : 0;
+?>
+
+
+<!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Login</title>
-		<link rel="stylesheet" href="assets/style.css">
-	</head>
-	<body>
-		<main class="login-container">
-			<form class="card" action="login.php" method="post">
-				<h1>Iniciar sesión</h1>
-				<?php if ($error === 1): ?>
-					<div class="alert">Credenciales inválidas.</div>
-				<?php endif; ?>
-				<label for="username">Usuario</label>
-				<input id="username" name="username" type="text" required autofocus>
 
-				<label for="password">Contraseña</label>
-				<input id="password" name="password" type="password" required>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Hijos de Dios</title>
+    <link rel="stylesheet" href="CSS/estilos2.css">
+</head>
 
-				<button type="submit">Entrar</button>
-			</form>
-		</main>
-	</body>
+<body>
+    <section class="izquierda">
+        <div class="info">
+            <img src="IMG/Image_fx-removebg-preview.webp" alt="Logo Colegio Hijos de Dios" class="logo">
+            <h1>COLEGIO <span class="titulo">HIJOS DE DIOS</span></h1>
+        </div>
+    </section>
+
+    <section class="derecha">
+        <main class="login-container">
+            <form class="card" action="login.php" method="post">
+                <h1>Iniciar sesión</h1>
+
+
+                <?php if ($error == 1): ?>
+                    <div class="alerta">Correo o contraseña incorrectos</div>
+                <?php endif; ?>
+
+                
+                <label for="Correo">Correo</label>
+                <input id="Correo" name="correo" type="email" required autofocus>
+
+                <label for="Contrasena">Contraseña</label>
+                <input id="Contrasena" name="contrasena" type="password" required>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </main>
+    </section>
+</body>
+
 </html>
