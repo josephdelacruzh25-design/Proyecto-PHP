@@ -1,11 +1,5 @@
 <?php
-session_start();
-
-// prueba: proteger la página
-if (!isset($_SESSION['usuario'])) {
-    header("Location: index.php");
-    exit;
-}
+include("../includes/sesion.php");
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +72,7 @@ if (!isset($_SESSION['usuario'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="../index.php" title="Cerrar Sesión">
+                        <a href="../salir.php" title="Cerrar Sesión">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             <span>Cerrar Sesión</span>
                         </a>
@@ -99,7 +93,7 @@ if (!isset($_SESSION['usuario'])) {
     </section>
     <footer>
         <div class="contenedor">
-            <p>&copy; 2025 Mi Sitio Web</p>
+            <p>&copy; 2025 Colegio Hijos de Dios</p>
         </div>
     </footer>
 </body>

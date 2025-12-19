@@ -1,32 +1,36 @@
 <?php
 session_start();
-include("conexion.php");
+include("INCLUDES/conexion.php");
 
-$correo = $_POST['correo'];
+$input = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 
 $sql = "SELECT * FROM usuarios 
-        WHERE correo = '$correo' 
-        AND contrasena = '$contrasena'";
+        WHERE (usuario = '$input' OR correo = '$input')
+        AND estado = 'activo'
+        LIMIT 1";
 
 $resultado = mysqli_query($conexion, $sql);
 
-if (mysqli_num_rows($resultado) == 1) {
+if ($resultado && mysqli_num_rows($resultado) === 1) {
 
     $usuario = mysqli_fetch_assoc($resultado);
 
-    $_SESSION['usuario'] = $usuario['nombre'];
-    $_SESSION['rol'] = $usuario['rol'];
+    if (password_verify($contrasena, $usuario['password'])) {
 
-    // Redirección según rol
-    if ($usuario['rol'] == 'alumno') {
-        header("Location: ALUMNO/inicio.php");
-    } elseif ($usuario['rol'] == 'docente') {
-        header("Location: inicio_docente.php");
-    } else {
-        header("Location: inicio_admin.php");
+        $_SESSION['usuario'] = $usuario['usuario'];
+        $_SESSION['rol'] = $usuario['rol'];
+
+        if ($usuario['rol'] === 'admin') {
+            header("Location: ADMIN/inicio.php");
+        } elseif ($usuario['rol'] === 'alumno') {
+            header("Location: ALUMNO/inicio.php");
+        }
+        exit;
     }
-
-} else {
-    header("Location: index.php?error=1");
 }
+
+// ❌ Error
+header("Location: index.php?error=1");
+exit;
+?>

@@ -1,9 +1,4 @@
 <?php
-$error = 0;
-include("conexion.php");
-?>
-
-<?php
 $error = isset($_GET['error']) ? 1 : 0;
 ?>
 
@@ -37,8 +32,8 @@ $error = isset($_GET['error']) ? 1 : 0;
                 <?php endif; ?>
 
                 
-                <label for="Correo">Correo</label>
-                <input id="Correo" name="correo" type="email" required autofocus>
+                <label for="Usuario">Usuario</label>
+                <input id="Usuario" name="usuario" type="text" required autofocus>
 
                 <label for="Contrasena">Contraseña</label>
                 <input id="Contrasena" name="contrasena" type="password" required>

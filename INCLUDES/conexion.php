@@ -1,7 +1,7 @@
 <?php
-$servidor = "localhost:3306";
+$servidor = "localhost";
 $usuario = "root";
-$contrasena = "admin123";  
+$contrasena = "";  
 $db = "colegio";
 
 $conexion = mysqli_connect($servidor, $usuario, $contrasena, $db);
