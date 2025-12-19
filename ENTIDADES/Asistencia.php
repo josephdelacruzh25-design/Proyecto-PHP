@@ -1,7 +1,7 @@
 <?php
 
 namespace ENTIDADES;
-
+// Header
 class Asistencia
 {
     public $id;

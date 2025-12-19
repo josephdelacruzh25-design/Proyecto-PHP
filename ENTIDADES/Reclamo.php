@@ -2,6 +2,7 @@
 
 namespace ENTIDADES;
 
+// Header
 class Reclamo
 {
     public $id;

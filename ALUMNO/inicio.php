@@ -17,7 +17,7 @@ include("../includes/sesion.php");
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Header --> <!-- Header -->
     <header>
         <div class="left">
             <div class="brand">
